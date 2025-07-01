@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="mobile_manipulation_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Include the arm-->
+    <xacro:include filename="$(find arm_description)/urdf/ur5e.urdf.xacro"/>
+    <!-- Include the gripper-->
+    <xacro:include filename="$(find gripper_description)/urdf/gripper.urdf.xacro"/>
+</robot>

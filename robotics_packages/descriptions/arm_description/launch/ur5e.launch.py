@@ -86,6 +86,7 @@ def generate_launch_description():
     urdf_path = FindPackageShare("arm_description").find("arm_description")
     ur_description_path = FindPackageShare("ur_description").find("ur_description")
     xacro_file = PathJoinSubstitution([urdf_path, "urdf", "ur5e.urdf.xacro"])
+    rviz_config_file = PathJoinSubstitution([urdf_path, "rviz", "arm.rviz"])
 
     robot_description_content = Command([
         PathJoinSubstitution([FindExecutable(name="xacro")]), " ", xacro_file,
@@ -151,6 +152,22 @@ def generate_launch_description():
         parameters=[robot_description],
     )
 
-    nodes_to_start = [robot_state_publisher_node]
+    #Joint State Publisher 
+    joint_state_publisher_node = Node(
+        package="joint_state_publisher_gui", 
+        executable="joint_state_publisher_gui",
+    )
+    rviz_node = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        arguments=["-d", rviz_config_file],
+        # parameters=[{"use_sim_time": use_gazebo}],
+        # condition=IfCondition(use_rviz),
+    )
+
+    nodes_to_start = [robot_state_publisher_node,
+                      joint_state_publisher_node,
+                      rviz_node]
 
     return LaunchDescription( declared_arguments + nodes_to_start)
