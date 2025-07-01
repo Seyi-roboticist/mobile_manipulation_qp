@@ -1,0 +1,37 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/seyi/rsp_workspace/install/x4_interfaces/include/**",
+        "/home/seyi/rsp_workspace/install/tot_sensor/include/**",
+        "/home/seyi/rsp_workspace/install/rsp_week07/include/**",
+        "/home/seyi/rsp_workspace/install/rsp_week04/include/**",
+        "/home/seyi/rsp_workspace/install/rsp_week03/include/**",
+        "/home/seyi/rsp_workspace/install/rsp_week02/include/**",
+        "/home/seyi/rsp_workspace/install/rsp_msgs/include/**",
+        "/home/seyi/rsp_workspace/install/ros2_controller_cartesian/include/**",
+        "/home/seyi/rsp_workspace/install/pnp_actionlib/include/**",
+        "/home/seyi/rsp_workspace/install/pnp_msgs/include/**",
+        "/home/seyi/rsp_workspace/install/assignment3/include/**",
+        "/home/seyi/rsp_workspace/install/assignment1_subpub/include/**",
+        "/home/seyi/rsp_workspace/install/assignment1_msgs/include/**",
+        "/home/seyi/ardu_ws/install/micro_ros_agent/include/**",
+        "/home/seyi/ardu_ws/install/ardupilot_msgs/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/seyi/mobile_manipulation_ws/src/mobile_manipulation_qp/robotics_packages/descriptions/arm_description/include/**",
+        "include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
