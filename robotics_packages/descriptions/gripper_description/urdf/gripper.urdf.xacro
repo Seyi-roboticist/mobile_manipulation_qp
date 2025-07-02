@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="robot_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- Include the macro definitions using package paths -->
+    <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro"/>
+    <xacro:include filename="$(find robotiq_description)/urdf/ur_to_robotiq_adapter.urdf.xacro"/>
+    
+    <!-- Instantiating the adapter macro -->
+    <xacro:ur_to_robotiq 
+        prefix="" 
+        parent="tool0" 
+        child="gripper_mount_link" 
+        rotation="0.0"/> <!-- This is the adapter -->
+    
+    <!-- Instantiating the gripper macro -->
+    <xacro:robotiq_gripper 
+        name="ur5e_gripper" 
+        prefix="" 
+        parent="gripper_mount_link" 
+        sim_ignition="$(arg sim_ignition)"
+        sim_isaac="$(arg sim_isaac)"
+        use_fake_hardware="$(arg use_fake_hardware)"
+        com_port="$(arg com_port)"
+        >
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:robotiq_gripper>
+</robot>

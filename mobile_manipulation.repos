@@ -1,0 +1,10 @@
+repositories:
+  external_deps/robotiq_gripper:
+    type: git
+    url: https://github.com/PickNikRobotics/ros2_robotiq_gripper.git
+    version: humble
+
+  external_deps/serial:
+    type: git
+    url: https://github.com/RoboticSeaProjects/serial.git
+    version: main
