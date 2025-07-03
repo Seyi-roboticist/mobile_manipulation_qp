@@ -11,7 +11,7 @@ vcs import < mobile_manipulation.repos
 
 At the root of your ROS workspace, run
 ```bash
-sudo apt update && rosdep install --from-paths src -y --ignore-src
+sudo apt update && rosdep update && rosdep install --from-paths src -y --ignore-src
 ```
 
 Build the packages using
