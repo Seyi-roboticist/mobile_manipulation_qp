@@ -1,0 +1,49 @@
+{
+    "name": "ROS 2 Humble Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "python.defaultInterpreterPath": "/usr/bin/python3",
+                "python.analysis.autoImportCompletions": true,
+                "python.analysis.diagnosticMode": "workspace",
+                "python.languageServer": "Pylance",
+                "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
+            },
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-python.python",
+                "ms-vscode.cmake-tools",
+                "redhat.vscode-yaml",
+                "dotjoshjohnson.ros",
+                "eamodio.gitlens",
+                "mhutchie.git-graph"
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "",
+    "remoteUser": "rosuser",
+    "containerEnv": {
+        "ROS_DOMAIN_ID": "0",
+        "RMW_IMPLEMENTATION": "rmw_fastrtps_cpp",
+        "DISPLAY": "${localEnv:DISPLAY}",
+        "QT_X11_NO_MITSHM": "1",
+        "MPLBACKEND": "Qt5Agg"
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/home/rosuser/ros2_ws/src/mobile_manipulation_qp,type=bind"
+    ],
+    "workspaceFolder": "/home/rosuser/ros2_ws",
+    "runArgs": [
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+        "--network=host",
+        "--privileged"
+    ]
+}
