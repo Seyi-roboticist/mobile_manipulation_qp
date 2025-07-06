@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot name="mobile_manipulation_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <!-- Arguments for configuration -->
-    <xacro:arg name="ur_type" default="ur5e"/>
-    <xacro:arg name="use_fake_hardware" default="true"/>
-    <xacro:arg name="sim_ignition" default="false"/>
-    <xacro:arg name="sim_isaac" default="false"/>
-    <xacro:arg name="com_port" default="/dev/ttyUSB0"/>
-    <xacro:arg name="tf_prefix" default=""/>
-    
-    <!-- Include the arm-->
-    <xacro:include filename="$(find arm_description)/urdf/ur5e.urdf.xacro"/>
-    <!-- Include the gripper-->
-    <xacro:include filename="$(find gripper_description)/urdf/gripper.urdf.xacro"/>
+   
+   <xacro:include filename="$(find husky_description)/urdf/husky.urdf.xacro"/>
+   <xacro:include filename="$(find arm_description)/urdf/ur5e.urdf.xacro"/>
+   <xacro:include filename="$(find gripper_description)/urdf/gripper.urdf.xacro"/>
+   
+   <joint name="arm_mount_joint" type="fixed">
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <parent link="top_plate_link"/>
+       <child link="arm_world"/>
+   </joint>
+
 </robot>

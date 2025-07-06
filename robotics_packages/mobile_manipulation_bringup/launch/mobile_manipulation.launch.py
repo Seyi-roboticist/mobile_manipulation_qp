@@ -2,17 +2,21 @@ from launch import LaunchDescription
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     # Combined robot description
-    robot_description_content = Command([
-        PathJoinSubstitution([FindExecutable(name="xacro")]), " ",
-        PathJoinSubstitution([
-            FindPackageShare("mobile_manipulation_bringup"), 
-            "urdf", 
-            "mobile_manipulation.urdf.xacro"
-        ])
-    ])
+    robot_description_content = ParameterValue(
+        Command([
+            PathJoinSubstitution([FindExecutable(name="xacro")]), " ",
+            PathJoinSubstitution([
+                FindPackageShare("mobile_manipulation_bringup"), 
+                "urdf", 
+                "mobile_manipulation.urdf.xacro"
+            ])
+        ]),
+        value_type=str
+    )
     
     robot_description = {"robot_description": robot_description_content}
     
@@ -40,7 +44,7 @@ def generate_launch_description():
         name="rviz2",
         output="screen",
         arguments=["-d", PathJoinSubstitution([
-            FindPackageShare("arm_description"), "rviz", "arm.rviz"
+            FindPackageShare("mobile_manipulation_bringup"), "rviz", "mobile_robot.rviz"
         ])],
     )
     
