@@ -37,6 +37,27 @@
 *.out
 *.app
 
-# debug information files
+# Debug information files
 *.dwo
+
+# Project specific
 external_deps/
+
+# VS Code
+.vscode/
+
+# ROS
+build/
+install/
+log/
+devel/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Other
+.DS_Store
+*~
+*.swp
