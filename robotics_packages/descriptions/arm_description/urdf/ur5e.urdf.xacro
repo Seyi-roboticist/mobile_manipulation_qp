@@ -96,4 +96,5 @@
         trajectory_port="$(arg trajectory_port)">
         <origin xyz="$(arg mount_xyz)" rpy="$(arg mount_rpy)"/>
     </xacro:ur_robot>
+
 </robot>
