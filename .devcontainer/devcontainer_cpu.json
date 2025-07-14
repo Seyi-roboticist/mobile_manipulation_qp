@@ -3,7 +3,6 @@
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
-            "BASE_IMAGE": "nvidia/cuda:12.4.1-devel-ubuntu22.04"
         }
     },
     "customizations": {
@@ -36,8 +35,7 @@
         "RMW_IMPLEMENTATION": "rmw_fastrtps_cpp",
         "DISPLAY": "${localEnv:DISPLAY}",
         "QT_X11_NO_MITSHM": "1",
-        "MPLBACKEND": "Qt5Agg",
-        "NVIDIA_DRIVER_CAPABILITIES": "all"
+        "MPLBACKEND": "Qt5Agg"
     },
     "mounts": [
         "source=${localWorkspaceFolder},target=/home/rosuser/ros2_ws/src/mobile_manipulation_qp,type=bind"
@@ -46,8 +44,6 @@
     "runArgs": [
         "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
         "--network=host",
-        "--privileged",
-        "--gpus",
-        "all"
+        "--privileged"
     ]
 }

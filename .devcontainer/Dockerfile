@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-ARG UBUNTU_VERSION="jammy"
-FROM ubuntu:${UBUNTU_VERSION}
+ARG BASE_IMAGE="ubuntu:jammy"
+FROM ${BASE_IMAGE}
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG USERNAME=rosuser
@@ -24,6 +24,7 @@ RUN apt-get update \
     sudo \
     software-properties-common \
     locales \
+    gnupg \
     && rm -rf /var/lib/apt/lists/*
 
 # Set locale for UTF-8 support
@@ -56,6 +57,13 @@ RUN apt-get update \
     ros-dev-tools \
     python3-rosdep \
     python3-vcstool \
+    && rm -rf /var/lib/apt/lists/*
+
+# Ignition Fortress and Bridge Installation
+RUN curl -sSL https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends ignition-fortress ros-humble-ros-gz-bridge \
     && rm -rf /var/lib/apt/lists/*
 
 # Initialize rosdep (run as root before switching user)
